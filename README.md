@@ -2,7 +2,7 @@
 
 [![Made with Claude Code](https://img.shields.io/badge/made_with-Claude_Code-D97757?logo=claude&logoColor=white)](https://claude.com/claude-code)
 
-Builds the art, fonts, sounds and card data of Poptropica's Mighty Action Force card game from your own copy of the
+Extracts the art, fonts, sounds and card data of Poptropica's Mighty Action Force card game from your own copy of the
 game files, for projects that can't redistribute them:
 
 - `godot`: might-action-force-tcg, a digital recreation in Godot
@@ -28,7 +28,7 @@ You need:
 - **Python 3.10+**, standard library only.
 
 `--out` writes the files under another folder instead of the project, which is handy for comparing a rebuild
-against the current files. Steps default to all of the target's (`python external/tools/extract.py -h` lists them).
+against the current files. 
 
 ## How it works
 
@@ -61,33 +61,33 @@ picks, so a different source file fails loudly instead of producing a wrong spli
 
 Paths are under the mirror's `game/`; `<ep>` is `con2` or `con3`.
 
-| What | Where |
-|---|---|
-| Card data | `data/items/<ep>/<card>.xml` (the game uses the file name; three files have a copy-pasted wrong `id`) |
-| Card art | `assets/items/<ep>/<card>.swf` |
-| Card frames, value badges | `assets/items/<ep>/background<value>.swf` |
-| Board, card back | `assets/scenes/<ep>/shared/cardGame/card_game.swf` |
-| Dialog window | `assets/scenes/<ep>/shared/cardGame/dialog_window.swf` (same art in both episodes) |
-| Deck organizer | `assets/scenes/con2/shared/popups/cardDeck.swf` |
-| Opponents, their lines and looks | `data/scenes/<ep>/shared/cardGame/ccgnpcs.xml`, `dialog.xml`, `npcs.xml` |
-| Fonts, game code | `Shell.swf` |
-| Sounds | `sound/effects/`, `sound/music/` |
+| What                             | Where                                                                                                 |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Card data                        | `data/items/<ep>/<card>.xml` (the game uses the file name; three files have a copy-pasted wrong `id`) |
+| Card art                         | `assets/items/<ep>/<card>.swf`                                                                        |
+| Card frames, value badges        | `assets/items/<ep>/background<value>.swf`                                                             |
+| Board, card back                 | `assets/scenes/<ep>/shared/cardGame/card_game.swf`                                                    |
+| Dialog window                    | `assets/scenes/<ep>/shared/cardGame/dialog_window.swf` (same art in both episodes)                    |
+| Deck organizer                   | `assets/scenes/con2/shared/popups/cardDeck.swf`                                                       |
+| Opponents, their lines and looks | `data/scenes/<ep>/shared/cardGame/ccgnpcs.xml`, `dialog.xml`, `npcs.xml`                              |
+| Fonts, game code                 | `Shell.swf`                                                                                           |
+| Sounds                           | `sound/effects/`, `sound/music/`                                                                      |
 
 Sprite IDs in `card_game.swf`, for going back to the source with JPEXS:
 
-| Piece | con2 ID | con3 ID |
-|---|---|---|
-| Whole layout (`content`) | 108 | 110 |
-| Background (`bg`) | 6 | 6 (+ shape 7, the damage overlay) |
-| Deck / card back | 20 | 21 |
-| Dock | 27 | 28 |
-| Player attack / bounty | 48 / 68 | 69 / 73 |
-| Enemy attack / bounty | 64 / 72 | 49 / 53 |
-| Player / enemy tray | 86 / 94 | 87 / 96 |
-| Player / enemy score track | 83 / 93 | 84 / 95 |
-| Red / yellow gem | 82 / 92 | 83 / 94 |
-| End popup (`splash_mc`) | 107 | 109 |
-| Logo (shape) / card-back arrows (large, small) | 18 / 11, 9 | – |
+| Piece                                          | con2 ID    | con3 ID                           |
+| ---------------------------------------------- | ---------- | --------------------------------- |
+| Whole layout (`content`)                       | 108        | 110                               |
+| Background (`bg`)                              | 6          | 6 (+ shape 7, the damage overlay) |
+| Deck / card back                               | 20         | 21                                |
+| Dock                                           | 27         | 28                                |
+| Player attack / bounty                         | 48 / 68    | 69 / 73                           |
+| Enemy attack / bounty                          | 64 / 72    | 49 / 53                           |
+| Player / enemy tray                            | 86 / 94    | 87 / 96                           |
+| Player / enemy score track                     | 83 / 93    | 84 / 95                           |
+| Red / yellow gem                               | 82 / 92    | 83 / 94                           |
+| End popup (`splash_mc`)                        | 107        | 109                               |
+| Logo (shape) / card-back arrows (large, small) | 18 / 11, 9 | –                                 |
 
 ## Adding a target
 
