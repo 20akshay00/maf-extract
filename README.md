@@ -1,5 +1,7 @@
 # maf-extract
 
+[![Made with Claude Code](https://img.shields.io/badge/made_with-Claude_Code-D97757?logo=claude&logoColor=white)](https://claude.com/claude-code)
+
 Builds the art, fonts, sounds and card data of Poptropica's Mighty Action Force card game from your own copy of the
 game files, for projects that can't redistribute them:
 
@@ -30,12 +32,12 @@ against the current files. Steps default to all of the target's (`python externa
 
 ## How it works
 
-| File | What |
-|---|---|
-| `extract.py` | Command line |
-| `swf.py` | Renders SWF characters to SVG, with JPEXS as the parser |
-| `source.py` | What's where in Poptropica's files: card art, frame layers, badges, board, fonts, card data |
-| `godot.py`, `pnp.py` | The two targets: which files each project gets, and where |
+| File                 | What                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------- |
+| `extract.py`         | Command line                                                                                |
+| `swf.py`             | Renders SWF characters to SVG, with JPEXS as the parser                                     |
+| `source.py`          | What's where in Poptropica's files: card art, frame layers, badges, board, fonts, card data |
+| `godot.py`, `pnp.py` | The two targets: which files each project gets, and where                                   |
 
 **Why not JPEXS's own SVG export?** It drops per-placement colour transforms (fades and tints): whole background
 layers of some card art (Fashion Ninja's smoke, Pony Girl's backdrop), the faded arrows on the card back, the dimmed
@@ -52,7 +54,6 @@ picks, so a different source file fails loudly instead of producing a wrong spli
 - The card back is the board's deck sprite: the game snapshots it for every face-down card (`CardGame.setUpDeck`).
 - Value-6 cards (Omegon) use the normal frame with a purple art border. con2's `background6.swf` also holds a gold
   frame, but the normal frame is drawn over it and the game's card renderer adds the whole file, so it never shows.
-- The worn board only differs from the clean one in its background (and card back).
 
 ## Adding a target
 
