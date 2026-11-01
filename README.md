@@ -12,10 +12,10 @@ Nothing from Poptropica is in this repository; it only contains the code that re
 
 ## Use
 
-Each project includes this repository as a git submodule at `external/tools`. From the project root:
+Each project includes this repository as a git submodule at `external/maf-extract`. From the project root:
 
 ```
-python external/tools/extract.py <godot|pnp> [steps ...] [--mirror DIR] [--out DIR]
+python external/maf-extract/extract.py <godot|pnp> [steps ...] [--mirror DIR] [--out DIR]
 ```
 
 You need:

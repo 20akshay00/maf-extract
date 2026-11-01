@@ -1,11 +1,11 @@
 """Build a project's Poptropica-derived files from your own copy of the game.
 
-    python external/tools/extract.py <target> [steps ...] [--mirror DIR] [--out DIR]
+    python external/maf-extract/extract.py <target> [steps ...] [--mirror DIR] [--out DIR]
 
 target: godot (might-action-force-tcg) or pnp (MightyActionForceTCG-PnP). Steps default to all of the target's.
-This folder is expected at <project>/external/tools, and the Poptropica mirror (the folder holding game/Shell.swf)
-at $MAF_POPTROPICA or <project>/external/poptropica; --mirror and --out override those. Needs Python 3.10+ and JPEXS ffdec-cli
-(FFDEC env var, default C:/Program Files (x86)/FFDec/ffdec-cli.exe).
+This folder is expected at <project>/external/maf-extract, and the Poptropica mirror (the folder holding
+game/Shell.swf) at $MAF_POPTROPICA or <project>/external/poptropica; --mirror and --out override those.
+Needs Python 3.10+ and JPEXS ffdec-cli (FFDEC env var, default C:/Program Files (x86)/FFDec/ffdec-cli.exe).
 """
 import argparse
 import os

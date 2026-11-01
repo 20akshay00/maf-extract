@@ -3,7 +3,7 @@
   assets/cards/   art, frame layers, badge, card backs     assets/board/  pieces, layout.json, gem strips
   assets/ui/      dialog window, deck organizer             assets/logo/   MAF emblem
   assets/fonts/   TTFs from the game shell                  assets/sounds/ effects + music
-  cards/data/     CardData .tres per card                   external/      data/, fonts/, actionscript/
+  cards/data/     CardData .tres per card                   external/reference/  data/, fonts/, actionscript/
 """
 import json
 import math
@@ -155,9 +155,9 @@ def fonts(src, out):
     for name in GAME_FONTS:
         out.copy(named_fonts[name], f"assets/fonts/{name}.ttf")
     for name in REFERENCE_FONTS:
-        out.copy(named_fonts[name], f"external/fonts/{name}.ttf")
+        out.copy(named_fonts[name], f"external/reference/fonts/{name}.ttf")
     for path in every:
-        out.copy(path, f"external/fonts/all_embedded/{os.path.basename(path)}")
+        out.copy(path, f"external/reference/fonts/all_embedded/{os.path.basename(path)}")
 
 
 def sounds(src, out):
@@ -172,7 +172,7 @@ def esc(s):
 
 
 def data(src, out):
-    """cards/data/*.tres for the game, plus reference JSON and the source XML in external/data/."""
+    """cards/data/*.tres for the game, plus reference JSON and the source XML in external/reference/data/."""
     all_cards = src.cards()
     done = set()
     for c in all_cards:
@@ -198,7 +198,7 @@ art = ExtResource("2")
     reference = [{k: c[k] for k in ("id", "xml_id_mismatch", "episode", "name", "value", "effect",
                                     "power_name", "description", "quotation")} | {"art": f"assets/cards/art/{c['art']}.svg"}
                  for c in all_cards]
-    out.write("external/data/cards.json", json.dumps(reference, indent=2, ensure_ascii=False))
+    out.write("external/reference/data/cards.json", json.dumps(reference, indent=2, ensure_ascii=False))
     opponents = []
     for ep in STYLES.values():
         root = ET.parse(src.path("data", "scenes", ep, "shared", "cardGame", "ccgnpcs.xml")).getroot()
@@ -207,12 +207,12 @@ art = ExtResource("2")
             opponents.append({"id": npc.get("id"), "episode": ep, "ai": c.get("ai"),
                               "deck": [e.text for e in c.findall("card")],
                               "reward": [e.text for e in npc.findall("reward/card")]})
-    out.write("external/data/opponents.json", json.dumps(opponents, indent=2, ensure_ascii=False))
+    out.write("external/reference/data/opponents.json", json.dumps(opponents, indent=2, ensure_ascii=False))
     for ep, items in src.card_items().items():
         for cid, _ in items:
-            out.copy(src.path("data", "items", ep, f"{cid}.xml"), f"external/data/source_xml/{ep}/items/{cid}.xml")
+            out.copy(src.path("data", "items", ep, f"{cid}.xml"), f"external/reference/data/source_xml/{ep}/items/{cid}.xml")
         for fn in ("ccgnpcs.xml", "dialog.xml", "npcs.xml"):
-            out.copy(src.path("data", "scenes", ep, "shared", "cardGame", fn), f"external/data/source_xml/{ep}/{fn}")
+            out.copy(src.path("data", "scenes", ep, "shared", "cardGame", fn), f"external/reference/data/source_xml/{ep}/{fn}")
 
 
 def actionscript(src, out):
@@ -221,7 +221,7 @@ def actionscript(src, out):
     base = os.path.join(tmp, "scripts")
     for d, _, files in os.walk(base):
         for fn in files:
-            out.copy(os.path.join(d, fn), os.path.join("external", "actionscript", os.path.relpath(os.path.join(d, fn), base)))
+            out.copy(os.path.join(d, fn), os.path.join("external", "reference", "actionscript", os.path.relpath(os.path.join(d, fn), base)))
 
 
 STEPS = {"cards": cards, "board": board, "ui": ui, "gems": gems, "logo": logo, "fonts": fonts,
