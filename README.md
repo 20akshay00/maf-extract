@@ -14,7 +14,7 @@ python external/maf-extract/extract.py <godot|pnp> [steps ...] [--mirror DIR] [-
 ```
 
 - `godot`: might-action-force-tcg, a digital recreation in Godot
-- `pnp`: [MightyActionForceTCG](https://github.com/20akshay00/MightyActionForceTCG), a print-and-play version
+- `pnp`: [MightyActionForceTCG-PnP](https://github.com/20akshay00/MightyActionForceTCG-PnP), a print-and-play version
 
 You need Python 3.10+, [JPEXS](https://github.com/jindrapetrik/jpexs-decompiler) (set `FFDEC` if `ffdec-cli` isn't
 at `C:/Program Files (x86)/FFDec/ffdec-cli.exe`), and the Poptropica Flash files, e.g. from
