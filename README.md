@@ -54,6 +54,40 @@ picks, so a different source file fails loudly instead of producing a wrong spli
 - The card back is the board's deck sprite: the game snapshots it for every face-down card (`CardGame.setUpDeck`).
 - Value-6 cards (Omegon) use the normal frame with a purple art border. con2's `background6.swf` also holds a gold
   frame, but the normal frame is drawn over it and the game's card renderer adds the whole file, so it never shows.
+- The logo is the MAF emblem from the card back, the only MAF logo in the game files (there's no "Mighty Action
+  Force" wordmark in the comics, popups or banners). The full card game logo on the fan wiki isn't in them.
+
+## Where things are in the game files
+
+Paths are under the mirror's `game/`; `<ep>` is `con2` or `con3`.
+
+| What | Where |
+|---|---|
+| Card data | `data/items/<ep>/<card>.xml` (the game uses the file name; three files have a copy-pasted wrong `id`) |
+| Card art | `assets/items/<ep>/<card>.swf` |
+| Card frames, value badges | `assets/items/<ep>/background<value>.swf` |
+| Board, card back | `assets/scenes/<ep>/shared/cardGame/card_game.swf` |
+| Dialog window | `assets/scenes/<ep>/shared/cardGame/dialog_window.swf` (same art in both episodes) |
+| Deck organizer | `assets/scenes/con2/shared/popups/cardDeck.swf` |
+| Opponents, their lines and looks | `data/scenes/<ep>/shared/cardGame/ccgnpcs.xml`, `dialog.xml`, `npcs.xml` |
+| Fonts, game code | `Shell.swf` |
+| Sounds | `sound/effects/`, `sound/music/` |
+
+Sprite IDs in `card_game.swf`, for going back to the source with JPEXS:
+
+| Piece | con2 ID | con3 ID |
+|---|---|---|
+| Whole layout (`content`) | 108 | 110 |
+| Background (`bg`) | 6 | 6 (+ shape 7, the damage overlay) |
+| Deck / card back | 20 | 21 |
+| Dock | 27 | 28 |
+| Player attack / bounty | 48 / 68 | 69 / 73 |
+| Enemy attack / bounty | 64 / 72 | 49 / 53 |
+| Player / enemy tray | 86 / 94 | 87 / 96 |
+| Player / enemy score track | 83 / 93 | 84 / 95 |
+| Red / yellow gem | 82 / 92 | 83 / 94 |
+| End popup (`splash_mc`) | 107 | 109 |
+| Logo (shape) / card-back arrows (large, small) | 18 / 11, 9 | – |
 
 ## Adding a target
 
