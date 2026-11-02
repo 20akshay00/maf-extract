@@ -192,7 +192,7 @@ value = {c["value"]}
 effect = {EFFECTS.index(c["effect"])}
 power_name = "{esc(c["power_name"]) if c["effect"] != "none" else ""}"
 text = "{esc(c["description"] if c["effect"] != "none" else c["quotation"])}"
-art = ExtResource("2")
+art_texture = ExtResource("2")
 ''')
     reference = [{k: c[k] for k in ("id", "xml_id_mismatch", "episode", "name", "value", "effect",
                                     "power_name", "description", "quotation")} | {"art": f"assets/cards/art/{c['art']}.svg"}
